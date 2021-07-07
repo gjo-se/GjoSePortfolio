@@ -27,6 +27,7 @@
 #include "..\\Actions\\CloseActions.mqh"
 
 #include "..\\Strategies\\Strategy_892.mqh"
+#include "..\\Strategies\\Strategy_980.mqh"
 
 #include <GjoSe\\Utilities\\InclUtilities.mqh>
 #include <GjoSe\\Objects\\InclLabel.mqh>

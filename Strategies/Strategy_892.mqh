@@ -47,8 +47,6 @@ void handleStrategy_892() {
 //+------------------------------------------------------------------+
 void manageOpen_892(int pStrategyIndex, int pStopLossPoints, int pTakeProfitPoints) {
 
-
-
    double ind0buffer0[];
    CopyBuffer(ind0handler_892, 1, 1, 3, ind0buffer0);
    double ind0buffer1[];
@@ -71,10 +69,10 @@ void manageOpen_892(int pStrategyIndex, int pStopLossPoints, int pTakeProfitPoin
 
    if(canOpenLong && canOpenShort) return;
 
-   if(canOpenLong && getOpenPositionsFilter() == false) {
+   if(canOpenLong && getOpenPositionsFilter(pStrategyIndex) == false) {
       openBuyOrderAction(pStrategyIndex, pStopLossPoints, pTakeProfitPoints);
       posType_892 = OP_BUY;
-   } else if(canOpenShort && getOpenPositionsFilter() == false) {
+   } else if(canOpenShort && getOpenPositionsFilter(pStrategyIndex) == false) {
       openSellOrderAction(pStrategyIndex, pStopLossPoints, pTakeProfitPoints);
       posType_892 = OP_SELL;
    }

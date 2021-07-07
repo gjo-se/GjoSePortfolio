@@ -17,7 +17,7 @@ void openBuyOrderAction(int pStrategyIndex, int pStopLossPoints, int pTakeProfit
    string comment = InpComment + " " + IntegerToString(getMagicNumber(pStrategyIndex));
 
    Trade.MagicNumber(getMagicNumber(pStrategyIndex));
-   Trade.FillType(SYMBOL_FILLING_FOK);
+   Trade.FillType(getOrderFillingType());
    Trade.Buy(Symbol(), volume, stopLoss, takeProfit, comment);
 
    cleanPositionTicketsArrayAction();
@@ -38,14 +38,14 @@ void openSellOrderAction(int pStrategyIndex, int pStopLossPoints, int pTakeProfi
    string comment = InpComment + " " + IntegerToString(getMagicNumber(pStrategyIndex));
 
    Trade.MagicNumber(getMagicNumber(pStrategyIndex));
-   Trade.FillType(SYMBOL_FILLING_FOK);
+   Trade.FillType(getOrderFillingType());
    Trade.Sell(Symbol(), volume, stopLoss, takeProfit, comment);
 
    cleanPositionTicketsArrayAction();
 
 }
 //+------------------------------------------------------------------+
-bool getOpenPositionsFilter() {
+bool getOpenPositionsFilter(int pStrategyIndex) {
 
    bool filter = false;
    long positionTicket = 0;
@@ -53,7 +53,7 @@ bool getOpenPositionsFilter() {
    int positionTicketsId = 0;
    for(positionTicketsId; positionTicketsId < ArraySize(positionTickets); positionTicketsId++) {
       positionTicket = positionTickets[positionTicketsId];
-      if(PositionType(positionTicket) == ORDER_TYPE_BUY || PositionType(positionTicket) == ORDER_TYPE_SELL) filter = true;
+      if(PositionMagicNumber(positionTicket) == getMagicNumber(pStrategyIndex)) filter = true;
    }
 
    return (filter);

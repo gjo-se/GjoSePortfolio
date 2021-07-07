@@ -7,7 +7,7 @@
    Version History
    ===============
 
-   3.0.0 Initial version
+   3.0 Initial version
 
    ===============
 
@@ -34,11 +34,15 @@
 int OnInit() {
    
    initializeStrategy_892();
+   initializeStrategy_980();
 
    return(INIT_SUCCEEDED);
 }
 
 void OnTick() {
+
+   //Print("--------------------------OnTick----positionTickets---------------");
+   //printArrayOneDimension(positionTickets, ArraySize(positionTickets));
 
    bool tradeable = true;
 
@@ -59,6 +63,7 @@ void OnTick() {
    if(tradeable == true) {
 
       handleStrategy_892();
+      handleStrategy_980();
 
    }
 

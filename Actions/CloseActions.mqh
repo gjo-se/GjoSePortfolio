@@ -18,7 +18,7 @@ void closeOrderAction(int pStrategyIndex) {
       }
    }
 
-   cleanPositionTicketsArrayAction(pStrategyIndex);
+   cleanPositionTicketsArrayAction();
 
 }
 //+------------------------------------------------------------------+

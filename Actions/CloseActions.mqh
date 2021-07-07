@@ -11,10 +11,11 @@ void closeOrderAction(int pStrategyIndex) {
 
    for(int positionTicketIndex = 0; positionTicketIndex < ArraySize(positionTickets); positionTicketIndex++) {
       positionTicket = positionTickets[positionTicketIndex];
-
       string comment = IntegerToString(pStrategyIndex) + "_" + IntegerToString(positionTicket);
-      Trade.Close(positionTicket, PositionVolume(positionTicket), comment);
-
+      
+      if(PositionMagicNumber(positionTicket) == getMagicNumber(pStrategyIndex)) {
+         Trade.Close(positionTicket, PositionVolume(positionTicket), comment);
+      }
    }
 
    cleanPositionTicketsArrayAction(pStrategyIndex);

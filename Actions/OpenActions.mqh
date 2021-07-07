@@ -6,8 +6,6 @@
 
 void openBuyOrderAction(int pStrategyIndex, int pStopLossPoints, int pTakeProfitPoints) {
 
-   Trade.MagicNumber(getMagicNumber(pStrategyIndex));
-
    double volume  = getTradeSize(InpUseMoneyManagement, InpLotsPerEquity, InpFixedVolume);
 
    double stopLoss = BuyStopLoss(Symbol(), pStopLossPoints, Bid());
@@ -18,17 +16,16 @@ void openBuyOrderAction(int pStrategyIndex, int pStopLossPoints, int pTakeProfit
    
    string comment = InpComment + " " + IntegerToString(getMagicNumber(pStrategyIndex));
 
+   Trade.MagicNumber(getMagicNumber(pStrategyIndex));
    Trade.FillType(SYMBOL_FILLING_FOK);
    Trade.Buy(Symbol(), volume, stopLoss, takeProfit, comment);
 
-   cleanPositionTicketsArrayAction(pStrategyIndex);
+   cleanPositionTicketsArrayAction();
 
 }
 //+------------------------------------------------------------------+
 
 void openSellOrderAction(int pStrategyIndex, int pStopLossPoints, int pTakeProfitPoints) {
-
-   Trade.MagicNumber(getMagicNumber(pStrategyIndex));
 
    double volume  = getTradeSize(InpUseMoneyManagement, InpLotsPerEquity, InpFixedVolume);
 
@@ -40,10 +37,11 @@ void openSellOrderAction(int pStrategyIndex, int pStopLossPoints, int pTakeProfi
    
    string comment = InpComment + " " + IntegerToString(getMagicNumber(pStrategyIndex));
 
+   Trade.MagicNumber(getMagicNumber(pStrategyIndex));
    Trade.FillType(SYMBOL_FILLING_FOK);
    Trade.Sell(Symbol(), volume, stopLoss, takeProfit, comment);
 
-   cleanPositionTicketsArrayAction(pStrategyIndex);
+   cleanPositionTicketsArrayAction();
 
 }
 //+------------------------------------------------------------------+
@@ -60,3 +58,4 @@ bool getOpenPositionsFilter() {
 
    return (filter);
 }
+//+------------------------------------------------------------------+

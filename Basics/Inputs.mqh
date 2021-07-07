@@ -9,13 +9,12 @@
 //+------------------------------------------------------------------+
 
 input group                "---------- Basics ---------"
-input int                  InpBaseMagicNumber = 5580000;
-input string               InpComment = "Portfolio";
+input long                  InpBaseMagicNumber = 5010600000;
+input string               InpComment = "X5-Series";
 input bool                 InpTradeOnNewBar = true;
 
 input group                "---------- MoneyManagement ---------"
 input bool                 InpUseMoneyManagement = false;
-input double               InpRiskPercent = 0;
 input double               InpLotsPerEquity = 0.01;
 input double               InpFixedVolume = 0.1;
 

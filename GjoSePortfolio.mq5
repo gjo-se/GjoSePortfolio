@@ -13,10 +13,16 @@
 
 */
 
+
 //+------------------------------------------------------------------+
 //| Includes                                                         |
 //+------------------------------------------------------------------+
-#include "Basics\\Includes.mqh"
+#define BASE_MAGIC_NUMBER 5010600000
+
+#include <GjoSe\\X5-Series\\Basics\\Includes.mqh>
+
+#include "Strategies\\Strategy_892.mqh"
+#include "Strategies\\Strategy_980.mqh"
 
 //+------------------------------------------------------------------+
 //| Headers                                                          |
@@ -29,10 +35,17 @@
 #property strict
 
 //+------------------------------------------------------------------+
+//| CONST                                                            |
+//+------------------------------------------------------------------+
+const int    REQUIRED_BARS = 106;
+
+//+------------------------------------------------------------------+
 //| Expert initialization function                                   |
 //+------------------------------------------------------------------+
 int OnInit() {
-   
+
+   TesterHideIndicators(true);
+
    initializeStrategy_892();
    initializeStrategy_980();
 
